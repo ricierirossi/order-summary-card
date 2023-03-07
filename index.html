@@ -6,100 +6,145 @@
 
         <link rel="icon" type="img/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap" rel="stylesheet">
+
         <title>Projeto 1 | Order Summary Card</title>
 
         <style>
+        
             body {
+                font-family: 'Red Hat Display';
+                display: grid;
+                grid-template-columns: 1fr 31.6% 1fr;
+                grid-template-rows: 1fr 76.8% 1fr;
                 margin: 0;
-                background-color: hsl(225, 100%, 94%);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-family: 'Red Hat Display', sans-serif;
+                background-color: hsl(225, 100%, 98%);
+                height: 100vh;
             }
 
-            .background-desktop {
-                width: 1440px;
-                position: fixed;
+            .background {
+                position: absolute;
                 z-index: -1;
-            }
-
-            .summary {
-                margin: 80px 482px;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                border-radius: 20px;
-                /* box-shadow: 2px 2px 20; */
-            }
-
-            .hero {
                 width: 100%;
-                border-top-right-radius: 20px;
-                border-top-left-radius: 20px;
             }
-
+            
+            .image {
+                border-radius: 20px 20px 0px 0px;
+                width: 100%;                
+            }
+            
             p {
                 font-size: 16px;
+                margin: 0;
+            }
+          
+            .card {
+                display: flex;
+                flex-direction: column;
+                grid-area: 2 / 2 / 3 / 3 ;
+                background-color: #fff;
+                border-radius: 20px;
+                align-items: center;
             }
 
-            .icon-music {
-                grid-area: icon-music;
-                grid-row: 1 / 3;
-                grid-column: 1 / 2;
-            }
-
-            .plan {
-                grid-area: plan;
-                grid-row: 1 / 2;
-                grid-column: 2 / 3;
-            }
+            .order-summary,
+            .description,
+            .price,
+            .button,
+            .cancel {
+                padding: 15px;
+            }           
 
             .price {
-                grid-area: price;
-                grid-row: 2 / 3;
-                grid-column: 2 / 3;
-            }
-
-            .change {
-                grid-area: change;
-                grid-row: 1 / 3;
-                grid-column: 3 / 4;
-            }
-
-            .payment {
-                background-color: hsl(225, 100%, 98%);
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: 1fr 1fr;
-                grid-template-areas: 'icon-music plan change'
-                                     'icon-music price change';
-                align-items: center;
-
+                justify-content: center;
+                background-color: hsl(225, 100%, 98%);
+                width: 77%;
+                height: 20%;
+                border-radius: 20px;
             }
             
+            .value {
+                order: 1;
+                grid-area: 2 / 2 / 2 / 3;
+                color: hsl(224, 23%, 55%);
+            }
+
+            .music-icon {
+                grid-area: 1 / 1 / 3 / 2;
+            }
+
+            .change {
+                grid-area: 1 / 3 / 3 / 4;
+                font-weight: 700;
+            }
+            
+            .order-summary {
+                justify-content: center;
+                height: 6%;
+                padding: 10% 0% 6% 0%;
+                font-weight: 900;
+                font-size: 25px;
+            }
+            
+            .description {
+                box-sizing: border-box;
+                height: 16%;
+                padding: 0px 50px 6px 50px;
+                text-align: center;
+                font-weight: 500;
+                color: hsl(224, 23%, 55%);
+            }
+
+            .button {
+                width: 77%;
+                height: 10%;
+                text-decoration: none;
+                text-align: center; 
+                margin: 6% 0% 6% 0%;
+            }
+            
+            .highlight  {
+                background-color: hsl(245, 75%, 52%);
+                color: #fff;
+                font-weight: 700;
+                border-radius: 10px;
+            }
+            
+            .plan-type {
+                font-weight: 700;
+                text-align: start;
+         
+                
+            }
+
+            .cancel {
+                font-weight: 700;
+                color: hsl(224, 23%, 55%);
+            }
+
         </style>
     </head>
     <body>
-        <img class="background-desktop" src="./images/pattern-background-desktop.svg">
-        <div class="summary">
-            <img class="hero" src="./images/illustration-hero.svg">   
-             <h1>
-                 <strong>Order Summary</strong>
-             </h1>
-             <p>
+        <img class="background" src="./images/pattern-background-desktop.svg">
+        <div class="card">
+            <img class="image" src="./images/illustration-hero.svg">
+            <strong class="order-summary">Order Summary</strong>
+            <p class="description">
                 You can now listen to millions of songs, 
                 audiobooks, and podcasts on any device 
                 anywhere you like!
-             </p>
-             <div class="payment">
-                 <img class="icon-music" src="./images/icon-music.svg">
-                 <strong class="plan">Annual Plan</strong>
-                 <p class="price">$59.99/year</p>
-                 <a class="change" href="/change">Change</a>
-             </div>
-             <button>Proceed to Payment</button>
-              <a href="/cancelOrder">Cancel Order</a>
+            </p>
+            <div class="price">
+                <img class="music-icon" src="./images/icon-music.svg">
+                <p class="plan-type">Annual Plan</p>
+                <p class="value">$59.99/year</p>
+                <a class="change" href="/change">Change</a>
+            </div>
+                <a class="button highlight" href="/payment">Proceed to Payment</a>
+                <a class="cancel" href="/cancel">Cancel Order</a>
         </div>
     </body>
 </html>
