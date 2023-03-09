@@ -11,140 +11,165 @@
         <title>Projeto 1 | Order Summary Card</title>
 
         <style>
+
+            :root {
+                --pale-blue: hsl(225, 100%, 94%);
+                --bright-blue: hsl(245, 75%, 52%);
+                --very-pale-blue: hsl(225, 100%, 98%);
+                --desaturated-blue: hsl(224, 23%, 55%);
+                --dark-blue: hsl(223, 47%, 23%);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
         
             body {
                 font-family: 'Red Hat Display';
-                display: grid;
-                grid-template-columns: 1fr 31.6% 1fr;
-                grid-template-rows: 1fr 76.8% 1fr;
                 margin: 0;
-                background-color: hsl(225, 100%, 98%);
-                height: 100vh;
+                height: 100vh;                
+            }
+            
+            .container {
+                display: flex;
+                align-items: center;     
+                justify-content: center;
+                height: 100%;
+                background-image: url('./images/pattern-background-desktop.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: top;       
+                background-color: hsl(225, 100%, 98%);               
             }
 
-            .background {
-                position: absolute;
-                z-index: -1;
-                width: 100%;
-            }
-            
-            .image {
-                border-radius: 20px 20px 0px 0px;
-                width: 100%;                
-            }
-            
             p {
                 font-size: 16px;
                 margin: 0;
             }
-          
+           
+           .image {
+                border-radius: 20px 20px 0px 0px;
+                width: 100%;                
+            }
+                      
             .card {
-                display: flex;
-                flex-direction: column;
-                grid-area: 2 / 2 / 3 / 3 ;
                 background-color: #fff;
                 border-radius: 20px;
-                align-items: center;
+                max-width: 540px;
             }
 
-            .order-summary,
-            .description,
-            .price,
-            .button,
-            .cancel {
-                padding: 15px;
-            }           
+            .card-content {
+                text-align: center;
+                padding: 40px;
+            }
 
-            .price {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
+            .description {
+                line-height: 24px;
+                display: flex;
                 justify-content: center;
-                background-color: hsl(225, 100%, 98%);
-                width: 77%;
-                height: 20%;
-                border-radius: 20px;
-            }
-            
-            .value {
-                order: 1;
-                grid-area: 2 / 2 / 2 / 3;
+                font-weight: 500;
+                text-align: center;
                 color: hsl(224, 23%, 55%);
+                margin-bottom: pxs;
+            }
+
+            .description p {
+                max-width: 340px;
+                color: var(--desaturated-blue);
+            }
+
+            .plan {
+                display: flex;
+                align-items: center;
+                background-color: hsl(225, 100%, 98%);
+                width: 100%;
+                height: 100px;
+                padding: 20px;
+                border-radius: 20px;
+                margin-bottom: 40px;
+            }
+
+            .subscription {
+
+            }
+
+            .plan-type {
+                font-weight: 700;
+                text-align: start;
+                color: var(--dark-blue);
+            }
+
+            .value {
+                color: var(--desaturated-blue);
             }
 
             .music-icon {
-                grid-area: 1 / 1 / 3 / 2;
+                margin-right: 14px;
             }
 
             .change {
-                grid-area: 1 / 3 / 3 / 4;
                 font-weight: 700;
+                margin-left: auto;
+                color: var(--bright-blue);
             }
-            
+
             .order-summary {
-                justify-content: center;
-                height: 6%;
-                padding: 10% 0% 6% 0%;
+                font-size: 32px;
                 font-weight: 900;
-                font-size: 25px;
-            }
-            
-            .description {
-                box-sizing: border-box;
-                height: 16%;
-                padding: 0px 50px 6px 50px;
-                text-align: center;
-                font-weight: 500;
-                color: hsl(224, 23%, 55%);
+                color: var(--dark-blue);
+                margin: 0 0 20px 0;
             }
 
             .button {
-                width: 77%;
-                height: 10%;
+                display: block;
+                width: 100%;
                 text-decoration: none;
-                text-align: center; 
-                margin: 6% 0% 6% 0%;
+                text-align: center;
+                padding: 15px 0px; 
+                margin-bottom: 30px;
             }
-            
+
             .highlight  {
-                background-color: hsl(245, 75%, 52%);
+                background-color: var(--bright-blue);
                 color: #fff;
                 font-weight: 700;
                 border-radius: 10px;
             }
-            
-            .plan-type {
-                font-weight: 700;
-                text-align: start;
-         
-                
-            }
 
             .cancel {
+                display: block;
                 font-weight: 700;
                 color: hsl(224, 23%, 55%);
+                text-decoration: none;
             }
 
         </style>
     </head>
     <body>
-        <img class="background" src="./images/pattern-background-desktop.svg">
-        <div class="card">
-            <img class="image" src="./images/illustration-hero.svg">
-            <strong class="order-summary">Order Summary</strong>
-            <p class="description">
-                You can now listen to millions of songs, 
-                audiobooks, and podcasts on any device 
-                anywhere you like!
-            </p>
-            <div class="price">
-                <img class="music-icon" src="./images/icon-music.svg">
-                <p class="plan-type">Annual Plan</p>
-                <p class="value">$59.99/year</p>
-                <a class="change" href="/change">Change</a>
+        <div class="container">
+            <div class="card">
+                <img class="image" src="./images/illustration-hero.svg">
+                <div class="card-content">   
+                    <h1 class="order-summary">Order Summary</h1>
+                    <div class="description">
+                        <p>
+                            You can now listen to millions of songs, 
+                            audiobooks, and podcasts on any device 
+                            anywhere you like!
+                        </p>
+                    </div>
+                    <div class="plan">
+                        <img width="45" height="45" class="music-icon" src="./images/icon-music.svg">
+                        <div class="subscription">   
+                            <p class="plan-type">Annual Plan</p>
+                            <p class="value">$59.99/year</p>
+                        </div> 
+                        <a class="change" href="/change">Change</a>
+                    </div>
+                        <a class="button highlight" href="/payment">Proceed to Payment</a>
+                        <a class="cancel" href="/cancel">Cancel Order</a>
+                </div>            
             </div>
-                <a class="button highlight" href="/payment">Proceed to Payment</a>
-                <a class="cancel" href="/cancel">Cancel Order</a>
         </div>
     </body>
 </html>
